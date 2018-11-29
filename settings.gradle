@@ -1,0 +1,4 @@
+rootProject.name = 'template'
+include ':common'
+include ':common-js'
+include ':common-jvm'
