@@ -1,3 +1,3 @@
 package com.chrynan.kotlinplatform
 
-actual val platform: Platform = Platform.Js
+actual val platform: Platform by lazy { Platform.Js }
