@@ -3,3 +3,5 @@ include ':common'
 include ':common-js'
 include ':common-jvm'
 include ':common-android-jvm'
+include ':common-ios'
+
