@@ -31,6 +31,7 @@ implementation 'com.github.chRyNaN.kotlin-platform:common:VERSION'
 
 ## Using the library:
 
+The `platform` global property can be accessed to retrieve the current Platform type at runtime:
 ```kotlin
 fun performPlatformDependentAction() =
         when(platform){
