@@ -20,7 +20,7 @@ dependencies {
 task copyFramework {
     def buildType = project.findProperty("kotlin.build.type") ?: "DEBUG"
     def target = project.findProperty("kotlin.target") ?: "ios"
-    dependsOn "link${buildType.toLowerCase().capitalize()}Framework${target.capitalize()}"
+    //dependsOn "link${buildType.toLowerCase().capitalize()}Framework${target.capitalize()}"
 
     doLast {
         def srcFile = kotlin.targets."$target".compilations.main.getBinary("FRAMEWORK", buildType)

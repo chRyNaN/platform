@@ -2,8 +2,6 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-platform-android'
 
-apply plugin: 'maven'
-
 android {
     compileSdkVersion 28
 
