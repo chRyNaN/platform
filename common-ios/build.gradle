@@ -1,0 +1,35 @@
+apply plugin: 'kotlin-platform-native'
+apply plugin: 'maven'
+
+group 'com.chrynan'
+version rootProject.ext.libraryVersion
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    expectedBy project(':common')
+}
+
+// This task attaches native framework built from ios module to Xcode project
+// (see iosApp directory). Don't run this task directly,
+// Xcode runs this task itself during its build process.
+// Before opening the project from iosApp directory in Xcode,
+// make sure all Gradle infrastructure exists (gradle.wrapper, gradlew).
+task copyFramework {
+    def buildType = project.findProperty("kotlin.build.type") ?: "DEBUG"
+    def target = project.findProperty("kotlin.target") ?: "ios"
+    dependsOn "link${buildType.toLowerCase().capitalize()}Framework${target.capitalize()}"
+
+    doLast {
+        def srcFile = kotlin.targets."$target".compilations.main.getBinary("FRAMEWORK", buildType)
+        def targetDir = getProperty("configuration.build.dir")
+        copy {
+            from srcFile.parent
+            into targetDir
+            include 'app.framework/**'
+            include 'app.framework.dSYM'
+        }
+    }
+}
