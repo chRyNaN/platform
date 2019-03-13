@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package com.chrynan.kotlinplatform
 
 sealed class Platform {

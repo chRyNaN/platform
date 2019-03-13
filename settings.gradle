@@ -1,7 +1,13 @@
-rootProject.name = 'kotlin-platform'
-include ':common'
-include ':common-js'
-include ':common-jvm'
-include ':common-android-jvm'
-include ':common-ios'
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "kotlin-multiplatform") {
+                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+            }
+        }
+    }
+}
 
+rootProject.name = 'kotlin-platform'
+
+enableFeaturePreview('GRADLE_METADATA')
