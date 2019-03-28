@@ -1,32 +1,19 @@
 # kotlin-platform
-Simple Kotlin Multiplatform Library to Access the Platform Type in a Common Module.
+Simple Kotlin Multi-platform Library to Access the Platform Type in a Common Module.
 
-The idea is to allow the code in a Kotlin Multiplatform Project common module to access the runtime platform type (JVM, JS, Android, etc).
+The idea is to allow the code in a Kotlin Multi-platform Project Common Module to have access to the runtime platform type (JVM, JS, Android, etc).
 
 ## Building
 
 [![](https://jitpack.io/v/chRyNaN/kotlin-platform.svg)](https://jitpack.io/#chRyNaN/kotlin-platform)
 
-Provide the correct library to each module where it is required. For it to be accessible in the Kotlin common code, the `common` library must be in it's dependencies. Then, each platform module (`jvm`, `js`, `android`, etc) must provide the correct library counterpart.
+This is a Kotlin Multi-platform Library using the new multi-platform structure. For more information view the [Kotlin Documentation](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-a-multiplatform-project).
 
-**Kotlin Common:**
-```kotlin
-implementation 'com.github.chRyNaN.kotlin-platform:common:VERSION'
-```
+This library is currently provided through [JitPack](https://jitpack.io/#chRyNaN/kotlin-platform). **Note:** There is some issues with the new Kotlin Multi-platform project structure and JitPack so the dependencies may not resolve correctly.
 
-**Kotlin JVM:**
-```kotlin
-implementation 'com.github.chRyNaN.kotlin-platform:common-jvm:VERSION'
-```
 
-**Kotlin JS:**
 ```kotlin
-implementation 'com.github.chRyNaN.kotlin-platform:common:VERSION'
-```
-
-**Kotlin Android:**
-```kotlin
-implementation 'com.github.chRyNaN.kotlin-platform:common:VERSION'
+implementation 'com.github.chRyNaN.kotlin-platform:VERSION'
 ```
 
 ## Using the library:
@@ -38,7 +25,12 @@ fun performPlatformDependentAction() =
             Platform.Jvm -> jvmAction()
             Platform.Android -> androidAction()
             Platform.Ios -> iosAction()
-            Platform.Js -> jsAction()
+            Platform.NodeJs -> nodeJsAction()
+            Platform.WebJs -> webJsAction()
+            Platform.Mac -> macAction()
+            Platform.Windows -> windowsAction()
+            Platform.Linux -> linuxAction()
+            Platform.WebAssembly -> webAssemblyAction()
         }
 ```
 
@@ -46,6 +38,5 @@ fun performPlatformDependentAction() =
 
 ## Known Caveats
 
-* iOS is not supported yet (depsite there being a Platform type for it).
-* The Android module is technically a JVM module and has the possibility of being incorrectly used.
+* Linux is not supported yet (despite there being a Platform type for it).
 * Currently, the library just provides platform types but eventually could be used to platform specific information.
