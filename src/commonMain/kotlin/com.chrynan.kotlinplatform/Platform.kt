@@ -8,7 +8,9 @@ sealed class Platform {
 
     object Ios : Platform()
 
-    object Js : Platform()
+    object NodeJs : Platform()
+
+    object WebJs : Platform()
 }
 
 expect val platform: Platform

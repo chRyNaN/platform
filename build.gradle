@@ -66,8 +66,8 @@ android {
 
 kotlin {
     targets {
-        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")     \
-                                  ? presets.iosArm64 : presets.iosX64
+        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")       \
+                                    ? presets.iosArm64 : presets.iosX64
 
         fromPreset(iOSTarget, 'ios') {
             binaries {
@@ -78,6 +78,9 @@ kotlin {
         fromPreset(presets.android, 'android')
 
         jvm()
+
+        js("nodeJs")
+        js("webJs")
     }
     sourceSets {
         commonMain {
@@ -109,6 +112,14 @@ kotlin {
         iosMain {
         }
         iosTest {
+        }
+        nodeJsMain {
+        }
+        nodeJsTest {
+        }
+        webJsMain {
+        }
+        webJsTest {
         }
     }
 }
