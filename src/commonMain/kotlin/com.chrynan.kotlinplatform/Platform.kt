@@ -11,6 +11,8 @@ sealed class Platform {
     object NodeJs : Platform()
 
     object WebJs : Platform()
+
+    object Mac : Platform()
 }
 
 expect val platform: Platform
