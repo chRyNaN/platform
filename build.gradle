@@ -66,16 +66,18 @@ android {
 
 kotlin {
     targets {
-        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")    \
-                                 ? presets.iosArm64 : presets.iosX64
+        final def iOSTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")     \
+                                  ? presets.iosArm64 : presets.iosX64
 
         fromPreset(iOSTarget, 'ios') {
             binaries {
-                framework('uri')
+                framework('platform')
             }
         }
 
         fromPreset(presets.android, 'android')
+
+        jvm()
     }
     sourceSets {
         commonMain {
@@ -100,6 +102,10 @@ kotlin {
                 implementation 'org.jetbrains.kotlin:kotlin-test-junit'
             }
         }
+        jvmMain {
+        }
+        jvmTest {
+        }
         iosMain {
         }
         iosTest {
@@ -114,7 +120,7 @@ configurations {
 task packForXCode(type: Sync) {
     final File frameworkDir = new File(buildDir, "xcode-frameworks")
     final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
-    final def framework = kotlin.targets.ios.binaries.getFramework("uri", mode)
+    final def framework = kotlin.targets.ios.binaries.getFramework("platform", mode)
 
     inputs.property "mode", mode
     dependsOn framework.linkTask
