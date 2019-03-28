@@ -17,6 +17,8 @@ sealed class Platform {
     object Windows : Platform()
 
     object WebAssembly : Platform()
+
+    object Linux : Platform()
 }
 
 expect val platform: Platform
