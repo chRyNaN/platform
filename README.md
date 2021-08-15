@@ -24,11 +24,6 @@ androidPlatform.sdkInt
 andoridPlatform.versionName
 ```
 
-## Known Caveats
-
-* Linux is not supported yet (despite there being a Platform type for it).
-* Currently, the library just provides platform types but eventually could be used to platform specific information.
-
 ## Building
 
 The library is provided through [Repsy.io](https://repsy.io). Checkout
