@@ -1,51 +1,58 @@
 # kotlin-platform
 
 Simple Kotlin Multi-platform Library to Access the Platform Type in a Common Module.
+<img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/chRyNaN/platform">
 
-The idea is to allow the code in a Kotlin Multi-platform Project Common Module to have access to the runtime platform
-type (JVM, JS, Android, etc).
-
-## Building
-
-[![](https://jitpack.io/v/chRyNaN/kotlin-platform.svg)](https://jitpack.io/#chRyNaN/kotlin-platform)
-
-This is a Kotlin Multi-platform Library using the new multi-platform structure. For more information view
-the [Kotlin Documentation](https://kotlinlang.org/docs/reference/building-mpp-with-gradle.html#setting-up-a-multiplatform-project)
-.
-
-This library is currently provided through [JitPack](https://jitpack.io/#chRyNaN/kotlin-platform). **Note:** There is
-some issues with the new Kotlin Multi-platform project structure and JitPack so the dependencies may not resolve
-correctly.
-
-```kotlin
-implementation 'com.github.chRyNaN.kotlin-platform:VERSION'
-```
-
-## Using the library:
+## Library
 
 The `platform` global property can be accessed to retrieve the current Platform type at runtime:
 
 ```kotlin
 fun performPlatformDependentAction() =
     when (platform) {
-        Platform.Jvm -> jvmAction()
-        Platform.Android -> androidAction()
-        Platform.Ios -> iosAction()
-        Platform.NodeJs -> nodeJsAction()
-        Platform.WebJs -> webJsAction()
-        Platform.Mac -> macAction()
-        Platform.Windows -> windowsAction()
-        Platform.Linux -> linuxAction()
-        Platform.WebAssembly -> webAssemblyAction()
+        is Platform.Jvm -> jvmAction()
+        is Platform.Android -> androidAction()
+        is Platform.Ios -> iosAction()
+        is Platform.Js -> nodeJsAction()
     }
 ```
 
-**Note:** This library does not give you access to platform frameworks in common code.
+Each `Platform` instance provides platform specific properties:
+
+```kotlin
+androidPlatform.sdkInt
+andoridPlatform.versionName
+```
 
 ## Known Caveats
 
 * Linux is not supported yet (despite there being a Platform type for it).
 * Currently, the library just provides platform types but eventually could be used to platform specific information.
+
+## Building
+
+The library is provided through [Repsy.io](https://repsy.io). Checkout
+the [releases page](https://github.com/chRyNaN/platform/releases) to get the latest version.
+<img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/chRyNaN/platform">
+
+### Repository
+
+```
+repositories {
+    maven { url = "https://repo.repsy.io/mvn/chrynan/public" }
+}
+```
+
+## Dependencies
+
+```
+implementation "com.chrynan.platform:platform-core:VERSION"
+```
+
+## Documentation
+
+More detailed documentation is available in the [docs](docs) folder. The entry point to the documentation can be
+found [here](https://github.com/chRyNaN/platform/blob/main/docs/index.md).
 
 ## License
 
