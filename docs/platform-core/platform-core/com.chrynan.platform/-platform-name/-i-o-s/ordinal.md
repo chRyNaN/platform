@@ -1,0 +1,6 @@
+//[platform-core](../../../../index.md)/[com.chrynan.platform](../../index.md)/[PlatformName](../index.md)/[IOS](index.md)/[ordinal](ordinal.md)
+
+# ordinal
+
+[common]\
+val [ordinal](ordinal.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
