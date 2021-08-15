@@ -1,4 +1,4 @@
-\# IntelliJ
+# IDE
 *.iml
 *.ipr
 *.iws
@@ -20,9 +20,9 @@ local.properties
 /captures
 .externalNativeBuild
 
-\# Gradle
+# Gradle
 .gradle
 build/
 
-\# Mac
+# Mac
 .DS_Store
