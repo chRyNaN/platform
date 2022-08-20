@@ -2,9 +2,9 @@ package com.chrynan.platform
 
 import android.os.Build
 
-actual val platform: Platform = AndroidPlatform()
+internal actual val platform: Platform = AndroidPlatform()
 
-class AndroidPlatform : Platform.Android() {
+internal class AndroidPlatform : Platform.Android() {
 
     override val sdkInt: Int
         get() = Build.VERSION.SDK_INT

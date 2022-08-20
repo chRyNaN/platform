@@ -2,9 +2,9 @@ package com.chrynan.platform
 
 import java.util.*
 
-actual val platform: Platform = JvmPlatform()
+internal actual val platform: Platform = JvmPlatform()
 
-class JvmPlatform : Platform.Jvm() {
+internal class JvmPlatform : Platform.Jvm() {
 
     override val operatingSystemFamily: OperatingSystemFamily
         get() {

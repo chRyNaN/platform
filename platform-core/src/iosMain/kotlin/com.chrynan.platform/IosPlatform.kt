@@ -2,9 +2,9 @@ package com.chrynan.platform
 
 import platform.UIKit.UIDevice
 
-actual val platform: Platform = IosPlatform()
+internal actual val platform: Platform = IosPlatform()
 
-class IosPlatform : Platform.Ios() {
+internal class IosPlatform : Platform.Ios() {
 
     override val operatingSystemFamily =
         OperatingSystemFamily.getByTypeName(name = kotlin.native.Platform.osFamily.name)

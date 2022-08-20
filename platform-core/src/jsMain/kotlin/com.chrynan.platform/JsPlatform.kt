@@ -3,9 +3,9 @@ package com.chrynan.platform
 import kotlinx.browser.window
 import org.w3c.dom.Navigator
 
-actual val platform: Platform = JsPlatform()
+internal actual val platform: Platform = JsPlatform()
 
-class JsPlatform : Platform.Js() {
+internal class JsPlatform : Platform.Js() {
 
     private val navigator: Navigator
         get() = window.navigator

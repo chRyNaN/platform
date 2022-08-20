@@ -98,6 +98,18 @@ sealed class Platform {
 
         abstract val userAgent: String?
     }
+
+    companion object
 }
 
-expect val platform: Platform
+internal expect val platform: Platform
+
+/**
+ * Retrieves the [Platform] model for the current Kotlin target platform this is accessed from.
+ *
+ * **Note:** Prefer using the [PlatformProvider] interface to avoid retrieving the incorrect [Platform] instance.
+ *
+ * @see [PlatformProvider]
+ */
+val Platform.Companion.current: Platform
+    get() = platform
